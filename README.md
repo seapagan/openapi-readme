@@ -1,9 +1,15 @@
-# OpenAPI Readme Generator
+# OpenAPI Readme Generator  <!-- omit in toc -->
 
 Generates Markdown suitable for a README file from a local `openapi.json` file.
 
 This tool is still under development, progress so far is only a days work so
 there is a lot to do with extra functionality and refactoring.
+
+- [Usage](#usage)
+- [Options Summary](#options-summary)
+- [Options in Detail](#options-in-detail)
+  - [--route-level](#--route-level)
+  - [--inject](#--inject)
 
 ## Usage
 
@@ -20,11 +26,11 @@ plans are afoot to implement some sort of themeing.
 
 ## Options Summary
 
-* `--route-level INTEGER`: Number of heading levels to use.  [default: 4]
-* `--inject / --no-inject`: Inject generated output into a README file.  [default: False]
-* `--install-completion`: Install completion for the current shell.
-* `--show-completion`: Show completion for the current shell, to copy it or customize the installation.
-* `--help`: Show this message and exit.
+- `--route-level INTEGER`: Number of heading levels to use.  [default: 4]
+- `--inject / --no-inject`: Inject generated output into a README file.  [default: False]
+- `--install-completion`: Install completion for the current shell.
+- `--show-completion`: Show completion for the current shell, to copy it or customize the installation.
+- `--help`: Show this message and exit.
 
 ## Options in Detail
 
