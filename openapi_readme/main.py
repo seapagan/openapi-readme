@@ -55,6 +55,13 @@ def get_markdown(route_level: int) -> str:
     return output
 
 
+def print_header() -> None:
+    print(
+        "\n[cyan][underline]openapi-readme[/underline] "
+        f"version [bold]{__version__}[/bold] (c) Grant Ramsay 2022.",
+    )
+
+
 @app.command()
 def main(
     route_level: int = typer.Option(4, help="Number of heading levels to use."),
@@ -63,13 +70,10 @@ def main(
     ),
 ) -> None:
 
-    print(
-        "\n[cyan][underline]openapi-readme[/underline] "
-        f"version {__version__} (c) Grant Ramsay 2022."
-    )
     output = get_markdown(route_level)
 
     if inject:
+        print_header()
         try:
             with open(README_FILENAME, "r+") as f:
                 contents = f.readlines()
@@ -86,7 +90,7 @@ def main(
                         print(
                             "[gold3]"
                             "-> Existing API schema found in this file, "
-                            "[bold]Replacing."
+                            "[bold]Replacing.\n"
                         )
                         del contents[placeholder + 1 : end_placeholder + 2]
 
@@ -94,7 +98,7 @@ def main(
                         print(
                             "[green]"
                             "-> No Existing API schema found in this file, "
-                            "[bold]Inserting."
+                            "[bold]Inserting.\n"
                         )
 
                     output += "<!-- openapi-schema-end -->"
