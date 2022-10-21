@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "openapi-readme"
+version = "0.1.0"
+description = ""
+authors = ["Grant Ramsay <seapagan@gmail.com>"]
+readme = "README.md"
+packages = [{include = "openapi_readme"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+typer = {extras = ["all"], version = "^0.6.1"}
+
+
+[tool.poetry.group.dev.dependencies]
+flake8 = "^5.0.4"
+black = "^22.10.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
