@@ -90,5 +90,5 @@ def main(
         print(output, "\n")
 
 
-# if __name__ == "__main__":
-#     app()
+if __name__ == "__main__":
+    app()

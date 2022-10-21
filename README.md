@@ -2,7 +2,14 @@
 
 Generates Markdown suitable for a README file from a local `openapi.json` file.
 
+This tool is still under develoopment, progress so far is only a few hours work
+so there is a lot to do with extra functionality and refactoring.
+
 ## Usage
+
+```console
+$ openapi-readme [OPTIONS]
+```
 
 Run this in the same directory as your `openapi.json` file. By default the
 Markdown output will be printed to the console, but you can redirect it out to
@@ -11,11 +18,15 @@ a file too.
 The particular styling of the generated Markdown is currently hardcoded, though
 plans are afoot to implement some sort of themeing.
 
-## Options
+## Options Summary
 
-### --help
+* `--route-level INTEGER`: Number of heading levels to use.  [default: 4]
+* `--inject / --no-inject`: Inject generated output into a README file.  [default: False]
+* `--install-completion`: Install completion for the current shell.
+* `--show-completion`: Show completion for the current shell, to copy it or customize the installation.
+* `--help`: Show this message and exit.
 
-Show application usage hints and help.
+## Options in Detail
 
 ### --route-level
 
