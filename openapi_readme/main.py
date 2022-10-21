@@ -101,8 +101,7 @@ def main(
                             "[bold]Inserting.\n"
                         )
 
-                    output += "<!-- openapi-schema-end -->"
-                    output += "\n"
+                    output += "<!-- openapi-schema-end -->\n"
 
                     contents.insert(placeholder, output)
 
