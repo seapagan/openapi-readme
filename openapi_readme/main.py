@@ -68,11 +68,32 @@ def main(
                     placeholder = (
                         contents.index("<!-- openapi-schema -->\n") + 1
                     )
+
+                    # delete any existing data inside the tags.
+                    try:
+                        end_placeholder = contents.index(
+                            "<!-- openapi-schema-end -->\n"
+                        )
+                        print(
+                            "[gold3]"
+                            "Existing API schema found in this file, "
+                            "[bold]Replacing."
+                        )
+                        del contents[placeholder+1:end_placeholder+2]
+
+                    except ValueError:
+                        print(
+                            "[green]"
+                            "No Existing API schema found in this file, "
+                            "[bold]Inserting."
+                        )
+
                     output += "<!-- openapi-schema-end -->"
                     output += "\n"
+
                     contents.insert(placeholder, output)
+
                     f.seek(0)
-                    # f.truncate()
                     f.write("".join(contents))
                 except ValueError:
                     print(
