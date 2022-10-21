@@ -60,4 +60,6 @@ This is some preceeding text
 The document continues unaffected after the injection.
 ```
 
+Existing (previously injected) Schemas will be **replaced** by this new data.
+
 <!-- openapi-schema -->
