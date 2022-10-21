@@ -32,6 +32,7 @@ openapi-readme = "openapi_readme.main:app"
 python = "^3.7"
 typer = { extras = ["all"], version = "^0.6.1" }
 pydantic = "^1.10.2"
+single-source = "^0.3.0"
 
 
 [tool.poetry.group.dev.dependencies]

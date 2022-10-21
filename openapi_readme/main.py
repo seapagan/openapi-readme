@@ -3,6 +3,10 @@ from pathlib import Path
 
 import typer
 from rich import print
+from single_source import get_version
+
+path_to_pyproject_dir = Path(__file__).parent.parent
+__version__ = get_version(__name__, path_to_pyproject_dir, default_return=None)
 
 app = typer.Typer()
 
@@ -58,6 +62,11 @@ def main(
         False, help="Inject generated output into a README file."
     ),
 ) -> None:
+
+    print(
+        "\n[cyan][underline]openapi-readme[/underline] "
+        f"version {__version__} (c) Grant Ramsay 2022."
+    )
     output = get_markdown(route_level)
 
     if inject:
@@ -76,15 +85,15 @@ def main(
                         )
                         print(
                             "[gold3]"
-                            "Existing API schema found in this file, "
+                            "-> Existing API schema found in this file, "
                             "[bold]Replacing."
                         )
-                        del contents[placeholder+1:end_placeholder+2]
+                        del contents[placeholder + 1 : end_placeholder + 2]
 
                     except ValueError:
                         print(
                             "[green]"
-                            "No Existing API schema found in this file, "
+                            "-> No Existing API schema found in this file, "
                             "[bold]Inserting."
                         )
 
