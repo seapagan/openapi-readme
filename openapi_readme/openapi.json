@@ -1,0 +1,713 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Calendar API",
+    "description": "A Full-featured API for creating and managing a calendar.",
+    "contact": {
+      "name": "Grant Ramsay",
+      "url": "https://www.gnramsay.com"
+    },
+    "license": {
+      "name": "MIT License",
+      "url": "https://opensource.org/licenses/MIT"
+    },
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/users/": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Get Users",
+        "description": "Get all users or a specific user by their ID.",
+        "operationId": "get_users_users__get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "title": "User Id",
+              "type": "integer"
+            },
+            "name": "user_id",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Get Users Users  Get",
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/UserResponse"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/UserResponse"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "CustomHTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/users/me": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Get My User Data",
+        "description": "Get the current user's data only.",
+        "operationId": "get_my_user_data_users_me_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MyUserResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "CustomHTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/users/{user_id}/make-admin": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Make Admin",
+        "description": "Make the User with this ID an Admin.",
+        "operationId": "make_admin_users__user_id__make_admin_post",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "User Id",
+              "type": "integer"
+            },
+            "name": "user_id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "CustomHTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/users/{user_id}/password": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Change Password",
+        "description": "Change the password for the specified user.",
+        "operationId": "change_password_users__user_id__password_post",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "User Id",
+              "type": "integer"
+            },
+            "name": "user_id",
+            "in": "path"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserChangePasswordRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "CustomHTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/users/{user_id}/ban": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Ban User",
+        "description": "Ban the specific user Id.",
+        "operationId": "ban_user_users__user_id__ban_post",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "User Id",
+              "type": "integer"
+            },
+            "name": "user_id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "CustomHTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/users/{user_id}/unban": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Unban User",
+        "description": "Ban the specific user Id.",
+        "operationId": "unban_user_users__user_id__unban_post",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "User Id",
+              "type": "integer"
+            },
+            "name": "user_id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "CustomHTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/users/{user_id}": {
+      "put": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Edit User",
+        "description": "Update the specified User's data.",
+        "operationId": "edit_user_users__user_id__put",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "User Id",
+              "type": "integer"
+            },
+            "name": "user_id",
+            "in": "path"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserEditRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "CustomHTTPBearer": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Delete User",
+        "description": "Delete the specified User by user_id.",
+        "operationId": "delete_user_users__user_id__delete",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "User Id",
+              "type": "integer"
+            },
+            "name": "user_id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "CustomHTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/register/": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Register A New User",
+        "description": "Register a new User and return a JWT token.\n\nThis token should be sent as a Bearer token for each access to a protected\nroute.",
+        "operationId": "register_a_new_user_register__post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserRegisterRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokenResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/login/": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Login An Existing User",
+        "description": "Login an existing User and return a JWT token.\n\nThis token should be sent as a Bearer token for each access to a protected\nroute.",
+        "operationId": "login_an_existing_user_login__post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserLoginRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokenResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "HTTPValidationError": {
+        "title": "HTTPValidationError",
+        "type": "object",
+        "properties": {
+          "detail": {
+            "title": "Detail",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            }
+          }
+        }
+      },
+      "MyUserResponse": {
+        "title": "MyUserResponse",
+        "required": [
+          "email",
+          "first_name",
+          "last_name"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "title": "Email",
+            "type": "string",
+            "example": "user@example.com"
+          },
+          "first_name": {
+            "title": "First Name",
+            "type": "string",
+            "example": "John"
+          },
+          "last_name": {
+            "title": "Last Name",
+            "type": "string",
+            "example": "Doe"
+          }
+        },
+        "description": "Response for non-admin getting their own User data."
+      },
+      "RoleType": {
+        "title": "RoleType",
+        "enum": [
+          "user",
+          "admin"
+        ],
+        "description": "Contains the different Role types Users can have."
+      },
+      "TokenResponse": {
+        "title": "TokenResponse",
+        "required": [
+          "token"
+        ],
+        "type": "object",
+        "properties": {
+          "token": {
+            "title": "Token",
+            "type": "string"
+          }
+        },
+        "description": "Response Schema for Register/Login routes.\n\nThis simply returns a JWT token."
+      },
+      "UserChangePasswordRequest": {
+        "title": "UserChangePasswordRequest",
+        "required": [
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "password": {
+            "title": "Password",
+            "type": "string",
+            "example": "My S3cur3 P@ssw0rd"
+          }
+        },
+        "description": "Request Schema for changing a user's password."
+      },
+      "UserEditRequest": {
+        "title": "UserEditRequest",
+        "required": [
+          "email",
+          "password",
+          "first_name",
+          "last_name"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "title": "Email",
+            "type": "string",
+            "example": "user@example.com"
+          },
+          "password": {
+            "title": "Password",
+            "type": "string",
+            "example": "My S3cur3 P@ssw0rd"
+          },
+          "first_name": {
+            "title": "First Name",
+            "type": "string",
+            "example": "John"
+          },
+          "last_name": {
+            "title": "Last Name",
+            "type": "string",
+            "example": "Doe"
+          }
+        },
+        "description": "Request schema for Editing a User.\n\nFor now just inherit everything from the UserRegisterRequest"
+      },
+      "UserLoginRequest": {
+        "title": "UserLoginRequest",
+        "required": [
+          "email",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "title": "Email",
+            "type": "string",
+            "example": "user@example.com"
+          },
+          "password": {
+            "title": "Password",
+            "type": "string",
+            "example": "My S3cur3 P@ssw0rd"
+          }
+        },
+        "description": "Request schema for the Login Route."
+      },
+      "UserRegisterRequest": {
+        "title": "UserRegisterRequest",
+        "required": [
+          "email",
+          "password",
+          "first_name",
+          "last_name"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "title": "Email",
+            "type": "string",
+            "example": "user@example.com"
+          },
+          "password": {
+            "title": "Password",
+            "type": "string",
+            "example": "My S3cur3 P@ssw0rd"
+          },
+          "first_name": {
+            "title": "First Name",
+            "type": "string",
+            "example": "John"
+          },
+          "last_name": {
+            "title": "Last Name",
+            "type": "string",
+            "example": "Doe"
+          }
+        },
+        "description": "Request schema for the Register Route."
+      },
+      "UserResponse": {
+        "title": "UserResponse",
+        "required": [
+          "email",
+          "first_name",
+          "last_name",
+          "role",
+          "banned"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "title": "Email",
+            "type": "string",
+            "example": "user@example.com"
+          },
+          "id": {
+            "title": "Id",
+            "type": "integer",
+            "default": 25
+          },
+          "first_name": {
+            "title": "First Name",
+            "type": "string",
+            "example": "John"
+          },
+          "last_name": {
+            "title": "Last Name",
+            "type": "string",
+            "example": "Doe"
+          },
+          "role": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/RoleType"
+              }
+            ],
+            "example": "user"
+          },
+          "banned": {
+            "title": "Banned",
+            "type": "boolean",
+            "example": false
+          }
+        },
+        "description": "Response Schema for a User."
+      },
+      "ValidationError": {
+        "title": "ValidationError",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "loc": {
+            "title": "Location",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            }
+          },
+          "msg": {
+            "title": "Message",
+            "type": "string"
+          },
+          "type": {
+            "title": "Error Type",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "CustomHTTPBearer": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  }
+}

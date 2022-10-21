@@ -2,13 +2,14 @@
 name = "openapi-readme"
 version = "0.1.0"
 description = ""
-authors = ["Grant Ramsay <seapagan@gmail.com>"]
+authors = ["Grant Ramsay <grant@gnramsay.com>"]
 readme = "README.md"
-packages = [{include = "openapi_readme"}]
+packages = [{ include = "openapi_readme" }]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-typer = {extras = ["all"], version = "^0.6.1"}
+typer = { extras = ["all"], version = "^0.6.1" }
+pydantic = "^1.10.2"
 
 
 [tool.poetry.group.dev.dependencies]
