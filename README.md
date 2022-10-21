@@ -2,13 +2,13 @@
 
 Generates Markdown suitable for a README file from a local `openapi.json` file.
 
-This tool is still under develoopment, progress so far is only a few hours work
-so there is a lot to do with extra functionality and refactoring.
+This tool is still under development, progress so far is only a days work so
+there is a lot to do with extra functionality and refactoring.
 
 ## Usage
 
 ```console
-$ openapi-readme [OPTIONS]
+openapi-readme [OPTIONS]
 ```
 
 Run this in the same directory as your `openapi.json` file. By default the
