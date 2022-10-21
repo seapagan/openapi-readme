@@ -3,6 +3,10 @@ from pathlib import Path
 
 import typer
 from rich import print
+from single_source import get_version
+
+path_to_pyproject_dir = Path(__file__).parent.parent
+__version__ = get_version(__name__, path_to_pyproject_dir, default_return=None)
 
 app = typer.Typer()
 
@@ -51,6 +55,13 @@ def get_markdown(route_level: int) -> str:
     return output
 
 
+def print_header() -> None:
+    print(
+        "\n[cyan][underline]openapi-readme[/underline] "
+        f"version [bold]{__version__}[/bold] (c) Grant Ramsay 2022.",
+    )
+
+
 @app.command()
 def main(
     route_level: int = typer.Option(4, help="Number of heading levels to use."),
@@ -58,9 +69,11 @@ def main(
         False, help="Inject generated output into a README file."
     ),
 ) -> None:
+
     output = get_markdown(route_level)
 
     if inject:
+        print_header()
         try:
             with open(README_FILENAME, "r+") as f:
                 contents = f.readlines()
@@ -76,20 +89,19 @@ def main(
                         )
                         print(
                             "[gold3]"
-                            "Existing API schema found in this file, "
-                            "[bold]Replacing."
+                            "-> Existing API schema found in this file, "
+                            "[bold]Replacing.\n"
                         )
-                        del contents[placeholder+1:end_placeholder+2]
+                        del contents[placeholder + 1 : end_placeholder + 2]
 
                     except ValueError:
                         print(
                             "[green]"
-                            "No Existing API schema found in this file, "
-                            "[bold]Inserting."
+                            "-> No Existing API schema found in this file, "
+                            "[bold]Inserting.\n"
                         )
 
-                    output += "<!-- openapi-schema-end -->"
-                    output += "\n"
+                    output += "<!-- openapi-schema-end -->\n"
 
                     contents.insert(placeholder, output)
 
