@@ -40,8 +40,8 @@ def process_path(route: str, route_data: dict, route_level: int) -> str:
     return "\n".join(output) + "\n"
 
 
-def get_markdown(route_level: int):
-    """Return the full OpemAPI Markdown as a string."""
+def get_markdown(route_level: int) -> str:
+    """Return the full OpenAPI Markdown as a string."""
     schema_path = Path(".") / OPENAPI_FILENAME
     output = ""
     all_paths = get_api_data(schema_path)["paths"]
@@ -52,7 +52,12 @@ def get_markdown(route_level: int):
 
 
 @app.command()
-def main(route_level: int = 4, inject: bool = False) -> None:
+def main(
+    route_level: int = typer.Option(4, help="Number of heading levels to use."),
+    inject: bool = typer.Option(
+        False, help="Inject generated output into a README file."
+    ),
+) -> None:
     output = get_markdown(route_level)
 
     if inject:
