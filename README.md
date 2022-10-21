@@ -13,6 +13,10 @@ plans are afoot to implement some sort of themeing.
 
 ## Options
 
+### --help
+
+Show application usage hints and help.
+
 ### --route-level
 
 Specify the heading level for each Route in the generated documentation. This
