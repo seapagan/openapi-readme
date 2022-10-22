@@ -1,12 +1,20 @@
 import json
 from pathlib import Path
 
+try:
+    from importlib import metadata
+except ImportError:  # for Python<3.8
+    import importlib_metadata as metadata
+
 import typer
 from rich import print
 from single_source import get_version
 
 path_to_pyproject_dir = Path(__file__).parent.parent
 __version__ = get_version(__name__, path_to_pyproject_dir, default_return=None)
+
+if __version__ is None:
+    __version__ = metadata.version("openapi-readme")
 
 app = typer.Typer()
 
