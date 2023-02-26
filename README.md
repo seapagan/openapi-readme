@@ -10,6 +10,7 @@ there is a lot to do with extra functionality and refactoring.
 - [Options in Detail](#options-in-detail)
   - [--route-level](#--route-level)
   - [--inject](#--inject)
+- [TODO](#todo)
 
 ## Usage
 
@@ -62,4 +63,8 @@ The document continues unaffected after the injection.
 
 Existing (previously injected) Schemas will be **replaced** by this new data.
 
-<!-- openapi-schema -->
+## TODO
+
+Future improvement plans
+
+- Take more info from the `openapi.json` file
