@@ -45,5 +45,5 @@
   "python.testing.unittestArgs": ["-v", "-s", "./tests", "-p", "*_test.py"],
   "python.testing.unittestEnabled": false,
   "testExplorer.addToEditorContextMenu": true,
-  "isort.interpreter": ["./venv/bin/python"]
+  "isort.interpreter": ["./.venv/bin/python"]
 }
