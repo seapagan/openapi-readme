@@ -1,6 +1,5 @@
 import json
 from pathlib import Path
-from typing import Optional
 
 try:
     from importlib import metadata
@@ -17,7 +16,7 @@ __version__ = get_version(__name__, path_to_pyproject_dir, default_return=None)
 if __version__ is None:
     __version__ = metadata.version("openapi-readme")
 
-app = typer.Typer()
+app = typer.Typer(pretty_exceptions_show_locals=False)
 
 OPENAPI_FILENAME = "openapi.json"
 README_FILENAME = "README.md"
@@ -41,14 +40,20 @@ def process_path(route: str, route_data: dict, route_level: int) -> str:
     output = [""]
 
     for verb, verb_data in route_data.items():
-        first_line, *desc = verb_data["description"].splitlines()
+        description = verb_data.get("description", "")
         heading_level = "#" * route_level
         output.append(f"{heading_level} **`{verb.upper()}`** _{route}_\n")
-        output.append(f"> {verb_data['summary']} : _{first_line}_".strip())
-
-        if desc:
-            for line in desc:
-                output.append(f"> {line}".strip())
+        if description:
+            first_line, *desc = description.splitlines()
+            output.append(f"> {verb_data['summary']} : _{first_line}_".strip())
+            if desc:
+                for line in desc:
+                    output.append(f"> {line}".strip())
+        else:
+            # output.append(f"{heading_level} **`{verb.upper()}`** _{route}_\n")
+            output.append(
+                f"> {verb_data['summary']} : _No Description Given_".strip()
+            )
 
     return "\n".join(output) + "\n"
 
@@ -71,18 +76,18 @@ def print_header() -> None:
     )
 
 
-@app.callback(invoke_without_command=True)
-def ver(
-    version: Optional[bool] = typer.Option(
-        None,
-        "-v",
-        "--version",
-        is_eager=True,
-        help="Show version number and exit.",
-    )
-):
-    print_header()
-    raise typer.Exit(0)
+# @app.callback(invoke_without_command=True)
+# def ver(
+#     version: Optional[bool] = typer.Option(
+#         None,
+#         "-v",
+#         "--version",
+#         is_eager=True,
+#         help="Show version number and exit.",
+#     )
+# ):
+#     print_header()
+# raise typer.Exit(0)
 
 
 @app.command()
