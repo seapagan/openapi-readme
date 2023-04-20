@@ -1,5 +1,6 @@
 import json
 from pathlib import Path
+from typing import Optional
 
 try:
     from importlib import metadata
@@ -65,19 +66,34 @@ def get_markdown(route_level: int) -> str:
 
 def print_header() -> None:
     print(
-        "\n[cyan][underline]openapi-readme[/underline] "
-        f"version [bold]{__version__}[/bold] (c) Grant Ramsay 2022.",
+        "[cyan][underline]openapi-readme[/underline] "
+        f"version [bold]{__version__}[/bold] (c) Grant Ramsay 2022.\n",
     )
+
+
+@app.callback(invoke_without_command=True)
+def ver(
+    version: Optional[bool] = typer.Option(
+        None,
+        "-v",
+        "--version",
+        is_eager=True,
+        help="Show version number and exit.",
+    )
+):
+    print_header()
+    raise typer.Exit(0)
 
 
 @app.command()
 def main(
     route_level: int = typer.Option(4, help="Number of heading levels to use."),
     inject: bool = typer.Option(
-        False, help="Inject generated output into a README file."
+        False,
+        "--inject",
+        help="Inject generated output into a README file.",
     ),
 ) -> None:
-
     output = get_markdown(route_level)
 
     if inject:
