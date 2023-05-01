@@ -1,6 +1,5 @@
 import json
 from pathlib import Path
-from typing import Optional
 
 try:
     from importlib import metadata
