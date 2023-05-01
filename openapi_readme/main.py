@@ -17,7 +17,11 @@ __version__ = get_version(__name__, path_to_pyproject_dir, default_return=None)
 if __version__ is None:
     __version__ = metadata.version("openapi-readme")
 
-app = typer.Typer(pretty_exceptions_show_locals=False)
+app = typer.Typer(
+    pretty_exceptions_show_locals=False,
+    add_completion=False,
+    no_args_is_help=True,
+)
 
 OPENAPI_FILENAME = "openapi.json"
 README_FILENAME = "README.md"
