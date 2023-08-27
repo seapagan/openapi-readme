@@ -1,3 +1,4 @@
+"""CLI app to generate Markdown from an OpenAPI schema."""
 import json
 from pathlib import Path
 
@@ -26,17 +27,17 @@ OPENAPI_FILENAME = "openapi.json"
 README_FILENAME = "README.md"
 
 
-def get_api_data(filename: str) -> dict:
+def get_api_data(filename: Path) -> dict:
     """Return a python dictionary containing the API data from schema file."""
     try:
-        with open(filename) as f:
-            return json.load(f)
-    except FileNotFoundError:
+        with open(filename, encoding="utf-8") as file:
+            return json.load(file)
+    except FileNotFoundError as exc:
         print(
             "[red]ERROR: No [green]openapi.json[/green] file found in "
             "this location!"
         )
-        raise typer.Exit(1)
+        raise typer.Exit(1) from exc
 
 
 def process_path(route: str, route_data: dict, route_level: int) -> str:
@@ -74,6 +75,7 @@ def get_markdown(route_level: int) -> str:
 
 
 def print_header() -> None:
+    """Print the header for the CLI."""
     print(
         "[cyan][underline]openapi-readme[/underline] "
         f"version [bold]{__version__}[/bold] (c) Grant Ramsay 2023.\n",
@@ -89,13 +91,14 @@ def main(
         help="Inject generated output into a README file.",
     ),
 ) -> None:
+    """Generate Markdown from an OpenAPI schema."""
     output = get_markdown(route_level)
 
     if inject:
         print_header()
         try:
-            with open(README_FILENAME, "r+") as f:
-                contents = f.readlines()
+            with open(README_FILENAME, "r+", encoding="utf-8") as file:
+                contents = file.readlines()
                 try:
                     placeholder = (
                         contents.index("<!-- openapi-schema -->\n") + 1
@@ -124,20 +127,20 @@ def main(
 
                     contents.insert(placeholder, output)
 
-                    f.seek(0)
-                    f.write("".join(contents))
+                    file.seek(0)
+                    file.write("".join(contents))
                 except ValueError:
                     print(
                         "[red]ERROR: No placeholder has been found in the "
                         "README. Please check the documentation before using "
                         "the '--inject' option."
                     )
-        except FileNotFoundError:
+        except FileNotFoundError as exc:
             print(
                 "[red]ERROR: No [green]README.md[/green] file found in "
                 "this location!"
             )
-            raise typer.Exit(2)
+            raise typer.Exit(2) from exc
     else:
         print(output, "\n")
 
