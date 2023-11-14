@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "openapi-readme"
-version = "0.2.4"
+version = "0.2.5"
 description = "Generate Markdown from an openapi JSON file."
 authors = ["Grant Ramsay <grant@gnramsay.com>"]
 readme = "README.md"
