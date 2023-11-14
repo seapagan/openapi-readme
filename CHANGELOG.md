@@ -1,13 +1,19 @@
 # Changelog
 
-## [Unreleased](https://github.com/seapagan/openapi-readme/tree/HEAD)
+This is an auto-generated log of all the changes that have been made to the
+project since the first release.
+
+This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+
+## [v0.2.5](https://github.com/seapagan/openapi-readme/releases/tag/v0.2.5) (November 14, 2023)
 
 **Dependency Updates**
 
 - Bump black from 23.7.0 to 23.11.0 ([#26](https://github.com/seapagan/openapi-readme/pull/26)) by [dependabot[bot]](https://github.com/apps/dependabot)
 - Bump typer from 0.8.0 to 0.9.0 ([#17](https://github.com/seapagan/openapi-readme/pull/17)) by [dependabot[bot]](https://github.com/apps/dependabot)
 
-[`Full Changelog`](https://github.com/seapagan/openapi-readme/compare/v0.2.4...HEAD) | [`Diff`](https://github.com/seapagan/openapi-readme/compare/v0.2.4...HEAD.diff) | [`Patch`](https://github.com/seapagan/openapi-readme/compare/v0.2.4...HEAD.patch)
+[`Full Changelog`](https://github.com/seapagan/openapi-readme/compare/v0.2.4...v0.2.5) | [`Diff`](https://github.com/seapagan/openapi-readme/compare/v0.2.4...v0.2.5.diff) | [`Patch`](https://github.com/seapagan/openapi-readme/compare/v0.2.4...v0.2.5.patch)
 
 ## [v0.2.4](https://github.com/seapagan/openapi-readme/releases/tag/v0.2.4) (August 27, 2023)
 
