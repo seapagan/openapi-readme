@@ -98,8 +98,8 @@ def get_markdown(route_level: int) -> str:
 def print_header() -> None:
     """Print the header for the CLI."""
     rprint(
-        "[cyan][underline]openapi-readme[/underline] "
-        f"version [bold]{__version__}[/bold] (c) Grant Ramsay 2023.\n",
+        "\n[cyan][underline]OpenAPI Readme Generator[/underline][/cyan] "
+        f"version [bold]{__version__}[/bold] (c) Grant Ramsay 2022-2024.\n",
     )
 
 
@@ -116,8 +116,8 @@ def main(
     """Generate Markdown from an OpenAPI schema."""
     output = get_markdown(route_level)
 
+    print_header()
     if inject:
-        print_header()
         try:
             with README_FILENAME.open("r+", encoding="utf-8") as file:
                 contents = file.readlines()
