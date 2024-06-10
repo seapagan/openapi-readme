@@ -28,9 +28,11 @@ plans are afoot to implement some sort of themeing.
 ## Options Summary
 
 - `--route-level INTEGER`: Number of heading levels to use.  [default: 4]
-- `--inject / --no-inject`: Inject generated output into a README file.  [default: False]
+- `--inject / --no-inject`: Inject generated output into a README file.
+  [default: False]
 - `--install-completion`: Install completion for the current shell.
-- `--show-completion`: Show completion for the current shell, to copy it or customize the installation.
+- `--show-completion`: Show completion for the current shell, to copy it or
+  customize the installation.
 - `--help`: Show this message and exit.
 
 ## Options in Detail
