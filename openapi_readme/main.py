@@ -3,7 +3,7 @@
 import json
 from importlib import metadata
 from pathlib import Path
-from typing import Any
+from typing import Any, NoReturn
 
 import typer
 from rich import print as rprint
@@ -25,7 +25,7 @@ OPENAPI_FILENAME = Path("openapi.json")
 README_FILENAME = Path("README.md")
 
 
-def handle_error(message: str, exit_code: int) -> None:
+def handle_error(message: str, exit_code: int) -> NoReturn:
     """Print an error message and exit."""
     rprint(f"[red]ERROR: {message}")
     raise typer.Exit(exit_code)
