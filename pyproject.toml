@@ -32,7 +32,7 @@ openapi-readme = "openapi_readme.main:app"
 
 [tool.poetry.dependencies]
 python = "^3.9,<4.0"
-typer = { extras = ["all"], version = ">=0.6.1,<0.10.0" }
+typer = { extras = ["all"], version = ">=0.6.1,<0.13.0" }
 single-source = "^0.3.0"
 
 [build-system]
