@@ -1,11 +1,8 @@
 """CLI app to generate Markdown from an OpenAPI schema."""
-import json
-from pathlib import Path
 
-try:
-    from importlib import metadata
-except ImportError:  # for Python<3.8
-    import importlib_metadata as metadata
+import json
+from importlib import metadata
+from pathlib import Path
 
 import typer
 from rich import print
