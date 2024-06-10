@@ -6,6 +6,18 @@ project since the first release.
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [v0.3.0](https://github.com/seapagan/openapi-readme/releases/tag/v0.3.0) (June 10, 2024)
+
+**Refactoring**
+
+- Update tooling to use Ruff and Mypy, raise minimum Python to 3.9 ([#36](https://github.com/seapagan/openapi-readme/pull/36)) by [seapagan](https://github.com/seapagan)
+
+**Dependency Updates**
+
+- Bump typer from 0.9.0 to 0.12.3 ([#37](https://github.com/seapagan/openapi-readme/pull/37)) by [dependabot[bot]](https://github.com/apps/dependabot)
+
+[`Full Changelog`](https://github.com/seapagan/openapi-readme/compare/v0.2.5...v0.3.0) | [`Diff`](https://github.com/seapagan/openapi-readme/compare/v0.2.5...v0.3.0.diff) | [`Patch`](https://github.com/seapagan/openapi-readme/compare/v0.2.5...v0.3.0.patch)
+
 ## [v0.2.5](https://github.com/seapagan/openapi-readme/releases/tag/v0.2.5) (November 14, 2023)
 
 **Dependency Updates**
