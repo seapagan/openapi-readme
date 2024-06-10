@@ -2,15 +2,35 @@
 
 Generates Markdown suitable for a README file from a local `openapi.json` file.
 
-This tool is still under development, progress so far is only a days work so
-there is a lot to do with extra functionality and refactoring.
+I still plan to add more features to this tool, but it is already useful for
+generating basic API documentation in Markdown from an OpenAPI schema.
 
+- [Installation](#installation)
 - [Usage](#usage)
 - [Options Summary](#options-summary)
 - [Options in Detail](#options-in-detail)
   - [--route-level](#--route-level)
   - [--inject](#--inject)
 - [TODO](#todo)
+
+## Installation
+
+This tool can be installed via `poetry` or `pip`:
+
+This tool is usually only needed during development, so it is recommended to
+install it as a development dependency.
+
+```console
+poetry add openapi-readme --group dev
+```
+
+With Pip:
+
+```console
+pip install openapi-readme
+```
+
+This will install the `openapi-readme` command line tool.
 
 ## Usage
 
