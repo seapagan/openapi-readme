@@ -17,16 +17,24 @@ generating basic API documentation in Markdown from an OpenAPI schema.
 
 ## Installation
 
-This tool can be installed via `poetry` or `pip`:
+This tool can be installed via `uv`, `poetry` or `pip` depending on your needs:
 
 This tool is usually only needed during development, so it is recommended to
 install it as a development dependency.
+
+uv:
+
+```console
+uv add --dev openapi-readme
+```
+
+Poetry:
 
 ```console
 poetry add openapi-readme --group dev
 ```
 
-With Pip:
+Or Pip:
 
 ```console
 pip install openapi-readme
@@ -105,6 +113,7 @@ process for submitting pull requests to us.
 
 This project is licensed under the MIT License as reproduced below:
 
+```pre
     Copyright (c) 2022-2024 Grant Ramsay
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -124,3 +133,4 @@ This project is licensed under the MIT License as reproduced below:
     LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
+```

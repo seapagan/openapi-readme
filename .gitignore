@@ -205,3 +205,4 @@ cython_debug/
 openapi.json
 .python-version
 .changelog_generator.toml
+.envrc

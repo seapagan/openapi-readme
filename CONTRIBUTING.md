@@ -32,10 +32,16 @@ Mac OS X. For Windows, you can use the
 [here](https://github.com/pyenv-win/pyenv-win#installation ) for installation
 instructions.
 
-We also use [Poetry](https://python-poetry.org/) to manage our dependencies. You
-should have this installed as well. You can install Poetry by following the
-instructions on the [Poetry
-website](https://python-poetry.org/docs/#installation).
+> [!TIP]
+>
+> You can also use `uv` to manage your Python installations. See the [uv
+> website](https://docs.astral.sh/uv/guides/install-python/) for more
+> information.
+
+From version `0.4.0` and forward, we use [uv](https://docs.astral.sh/uv/) to
+manage our dependencies (previously we used `Poetry`), so you should have this
+installed as well. You can install `uv` by following the instructions on the [uv
+website](https://docs.astral.sh/uv/getting-started/installation/).
 
 ## Getting Started
 
@@ -59,13 +65,21 @@ To get started, follow these steps:
 Run the following command to install the required dependencies:
 
 ```console
-poetry install
+uv sync
 ```
 
 You then need to activate the virtual environment:
 
+On Linux/Mac:
+
 ```console
-poetry shell
+source .venv/bin/activate
+```
+
+On Windows:
+
+```console
+.venv\Scripts\activate
 ```
 
 From here you can start working on the project. If you are using an IDE such as
@@ -74,16 +88,16 @@ the virtual environment that has just been created.
 
 ### Using Pip
 
-If you prefer to use `pip` instead of `poetry`, you can install the dependencies
+If you prefer to use `pip` instead of `uv`, you can install the dependencies
 using the auto-generated `requirements-dev.txt` file:
 
 ```console
 pip install -r requirements-dev.txt
 ```
 
-However, [Poetry](https://python-poetry.org/) is the
-recommended (and only supported) way of developing this project and is tightly
-integrated with the code and tools.
+However, [uv](https://docs.astral.sh/uv/){:target="_blank"} is the recommended
+(and only supported) way of developing this project and is tightly integrated
+with the code and tools.
 
 ## Linting
 
