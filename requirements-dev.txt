@@ -64,7 +64,7 @@ tomli==2.0.2
 toolz==1.0.0
 typer==0.12.5
 typing-extensions==4.12.2
-urllib3==2.2.3
+urllib3==2.5.0
 virtualenv==20.27.1
 watchdog==6.0.0
 wcwidth==0.2.13
